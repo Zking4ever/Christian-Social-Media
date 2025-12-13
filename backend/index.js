@@ -68,7 +68,7 @@ app.get('/youtube-feed', async (req, res) => {
                 type: 'video',
                 maxResults: 50,
                 key: YOUTUBE_API_KEY,
-                safeSearch: 'strict' // YouTube's built-in safe search
+                safeSearch: 'strict'
             }
         });
 
@@ -79,15 +79,27 @@ app.get('/youtube-feed', async (req, res) => {
             const title = item.snippet.title.toLowerCase();
             const description = item.snippet.description.toLowerCase();
 
-            // Example Blocklist (expand this list as needed)
-            const blockList = ['hate', 'violence', 'explicit', 'badword'];
-
-            // Check if title or description contains blocked words
+            // 1. Negative Filtering (Blocklist)
+            const blockList = ['hate', 'violence', 'explicit', 'badword', 'gambling'];
             const hasBlockedWord = blockList.some(word =>
                 title.includes(word) || description.includes(word)
             );
 
-            return !hasBlockedWord;
+            if (hasBlockedWord) return false;
+
+            // 2. Positive Filtering (Christian Alignment)
+            const christianKeywords = [
+                'god', 'jesus', 'christ', 'bible', 'faith', 'prayer', 'worship',
+                'church', 'gospel', 'holy', 'spirit', 'pastor', 'sermon',
+                'devotional', 'testimony', 'christian'
+            ];
+
+            // Allow if it matches at least one Christian keyword
+            const isAligned = christianKeywords.some(word =>
+                title.includes(word) || description.includes(word)
+            );
+
+            return isAligned;
         });
 
         res.json({ data: filteredItems });

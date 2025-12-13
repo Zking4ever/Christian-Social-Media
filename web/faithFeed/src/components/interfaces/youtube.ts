@@ -16,4 +16,5 @@ interface Thumbnail {
     high: { url: string; width?: number; height?: number; }
 }
 
+export type { Thumbnail };
 export default VideoData;
