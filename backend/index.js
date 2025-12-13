@@ -1,5 +1,7 @@
 const express = require('express');
 const cors = require('cors');
+const axios = require('axios');
+require('dotenv').config();
 const db = require('./database');
 
 const app = express();
@@ -44,6 +46,56 @@ app.post('/posts', (req, res) => {
             data: { id: this.lastID, ...req.body }
         });
     });
+});
+
+app.get('/youtube-feed', async (req, res) => {
+    try {
+        const { query } = req.query;
+        // Basic keywords or user query. Default to "Christian faith" if no query.
+        const searchQuery = query || 'Christian faith messages';
+
+        // You need a YouTube API Key in your .env file
+        const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
+
+        if (!YOUTUBE_API_KEY) {
+            return res.status(500).json({ error: 'Server configuration error: Missing YouTube API Key' });
+        }
+
+        const response = await axios.get('https://www.googleapis.com/youtube/v3/search', {
+            params: {
+                part: 'snippet',
+                q: searchQuery,
+                type: 'video',
+                maxResults: 50,
+                key: YOUTUBE_API_KEY,
+                safeSearch: 'strict' // YouTube's built-in safe search
+            }
+        });
+
+        const items = response.data.items;
+
+        // Backend Filtering Logic
+        const filteredItems = items.filter(item => {
+            const title = item.snippet.title.toLowerCase();
+            const description = item.snippet.description.toLowerCase();
+
+            // Example Blocklist (expand this list as needed)
+            const blockList = ['hate', 'violence', 'explicit', 'badword'];
+
+            // Check if title or description contains blocked words
+            const hasBlockedWord = blockList.some(word =>
+                title.includes(word) || description.includes(word)
+            );
+
+            return !hasBlockedWord;
+        });
+
+        res.json({ data: filteredItems });
+
+    } catch (error) {
+        console.error('YouTube API Error:', error.response?.data || error.message);
+        res.status(500).json({ error: 'Failed to fetch videos from YouTube' });
+    }
 });
 
 app.listen(PORT, () => {
