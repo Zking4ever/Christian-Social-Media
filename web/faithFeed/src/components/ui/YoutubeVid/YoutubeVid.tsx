@@ -1,17 +1,28 @@
 import './YoutubeVid.css'
-interface videoData {
-    videoId: string;
-    snippet: {
-        title: string,
-        description: string,
-        channelTitle: string,
-        thumbnails: object
-    }
+
+interface VideoSnippet {
+    title: string;
+    description: string;
+    channelTitle: string;
+    thumbnails?: Thumbnail;
 }
-export default function YoutubeVid({ vid }: { vid: videoData }) {
+
+interface VideoData {
+    id: { videoId: string };
+    snippet: VideoSnippet;
+}
+interface Thumbnail {
+    default: { url: string; width?: number; height?: number; }
+    medium: { url: string; width?: number; height?: number; }
+    high: { url: string; width?: number; height?: number; }
+}
+
+export default function YoutubeVid({ vid, thumbnails }: { vid: VideoData, thumbnails: Thumbnail }) {
     return (
-        <div key={vid.videoId} className="video-card">
-            {/* (vid.snippet &&<img alt="" />) */}
+        <div className="video-card">
+            <div className="video-thumbnail">
+                <img src={thumbnails.medium.url} alt={vid.snippet.title} />
+            </div>
             <div className="video-info">
                 <div className="channel-avatar">✝️</div>
                 <div className="video-text">
