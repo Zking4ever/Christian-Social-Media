@@ -1,21 +1,5 @@
 import './YoutubeVid.css'
-
-interface VideoSnippet {
-    title: string;
-    description: string;
-    channelTitle: string;
-    thumbnails?: Thumbnail;
-}
-
-interface VideoData {
-    id: { videoId: string };
-    snippet: VideoSnippet;
-}
-interface Thumbnail {
-    default: { url: string; width?: number; height?: number; }
-    medium: { url: string; width?: number; height?: number; }
-    high: { url: string; width?: number; height?: number; }
-}
+import VideoData from "../../interfaces/youtube";
 
 export default function YoutubeVid({ vid, thumbnails }: { vid: VideoData, thumbnails: Thumbnail }) {
     return (

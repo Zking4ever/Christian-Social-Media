@@ -1,23 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
-body {
-    margin: 0;
-    background-color: #f9f9f9;
-}
-
-.youtube-clone {
-    font-family: 'Roboto', sans-serif;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Main Layout */
-.feed-container {
-    flex: 1;
-    margin-top: 56px;
-    min-height: calc(100vh - 56px);
-}
 
 @media (min-width: 768px) {
     .sidebar {
@@ -29,22 +10,6 @@ body {
     .feed-container {
         margin-left: 240px;
     }
-}
-
-.nav-item {
-    padding: 10px 12px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: 500;
-    margin-bottom: 4px;
-}
-
-.nav-item:hover {
-    background-color: #f2f2f2;
-}
-
-.nav-item.active {
-    background-color: #f2f2f2;
 }
 
 .video-grid {
