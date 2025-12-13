@@ -7,6 +7,11 @@
     margin: 5px;
 }
 
+.video-card:hover {
+    transform: translateY(-2px);
+    background-color: var(--hover-color);
+}
+
 .video-info {
     display: flex;
     align-items: flex-start;
@@ -77,4 +82,11 @@
 /* Hover effect */
 .video-card:hover .video-title {
     color: #000;
+}
+
+@media (max-width:640px) {
+    .video-card {
+        width: 100%;
+        max-width: unset;
+    }
 }

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Header from '../components/Header/Header';
+import SideBar from '../components/SideBar/SideBar';
 import YoutubeVid from '../components/ui/YoutubeVid/YoutubeVid';
 import VideoData from '../components/interfaces/youtube';
 
@@ -29,15 +31,17 @@ const VideoPage = () => {
     if (error) return <div className="error">{error}</div>;
 
     return (
-        <div className="feed-container">
-            {videos.map((item) => {
-                const videoId = item.id.videoId;
-                if (!videoId) return null;
-                return (
-                    <YoutubeVid vid={item} thumbnails={item.snippet.thumbnails} key={item.id.videoId} />
-                );
-            })}
-        </div>
+        <>
+                <div className="feed-container">
+                    {videos.map((item) => {
+                        const videoId = item.id.videoId;
+                        if (!videoId) return null;
+                        return (
+                            <YoutubeVid vid={item} thumbnails={item.snippet.thumbnails} key={item.id.videoId} />
+                        );
+                    })}
+                </div>
+        </>
     );
 };
 

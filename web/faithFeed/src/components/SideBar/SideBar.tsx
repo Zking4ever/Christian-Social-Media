@@ -1,26 +1,24 @@
 import { IoMdHome } from "react-icons/io";
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { MdOutlineOndemandVideo } from "react-icons/md";
 import { RiUserCommunityLine } from "react-icons/ri";
 import { RiRobot3Line } from "react-icons/ri";
 import './SideBar.css'
-
-export default function SideBar() {
-    const location = useLocation();
-    const currentPath = location.pathname;
-
-    const isActive = (path: string) => currentPath === path ? 'active' : '';
-
+export default function SideBar({ currentPage }: { currentPage: string }) {
     return (
         <aside className="sidebar">
             <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-                <div className={`nav-item ${isActive('/')}`}><IoMdHome size={24} /> <span>Home</span></div>
+                <div className={`nav-item ${currentPage === 'home' ? 'active' : ''}`}><IoMdHome size={28} /> <span>Home</span></div>
             </Link>
             <Link to="/videos" style={{ textDecoration: 'none', color: 'inherit' }}>
-                <div className={`nav-item ${isActive('/videos')}`}><MdOutlineOndemandVideo size={24} /> <span>Videos</span></div>
+                <div className={`nav-item ${currentPage === 'video' ? 'active' : ''}`}><MdOutlineOndemandVideo size={28} /> <span>Videos</span></div>
             </Link>
-            <div className={`nav-item ${isActive('/communities')}`}> <RiUserCommunityLine size={24} /> <span>Communities</span></div>
-            <div className={`nav-item ${isActive('/aiMentor')}`}> <RiRobot3Line size={24} /> <span>Ai Mentor</span></div>
+            <Link to="/commuity" style={{ textDecoration: 'none', color: 'inherit' }}>
+                <div className={`nav-item ${currentPage === 'communities' ? 'active' : ''}`}> <RiUserCommunityLine size={28} /> <span>Communities</span></div>
+            </Link>
+            <Link to="/aimentor" style={{ textDecoration: 'none', color: 'inherit' }}>
+                <div className={`nav-item ${currentPage === 'aiMentor' ? 'active' : ''}`}> <RiRobot3Line size={24} /> <span>Ai Mentor</span></div>
+            </Link>
         </aside>
     );
 }
