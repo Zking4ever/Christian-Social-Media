@@ -3,6 +3,8 @@
     max-width: 360px;
     cursor: pointer;
     font-family: "Roboto", Arial, sans-serif;
+    display: inline-block;
+    margin: 5px;
 }
 
 .video-info {

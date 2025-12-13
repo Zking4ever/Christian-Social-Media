@@ -12,11 +12,9 @@ body {
     flex-direction: column;
 }
 
-/* Header */
- 
 /* Main Layout */
-.main-content {
-    display: flex;
+.feed-container {
+    flex: 1;
     margin-top: 56px;
     min-height: calc(100vh - 56px);
 }
@@ -47,13 +45,6 @@ body {
 
 .nav-item.active {
     background-color: #f2f2f2;
-}
-
-/* Feed */
-.feed-container {
-    flex: 1;
-    padding: 24px;
-    background: #f9f9f9;
 }
 
 .video-grid {

@@ -113,18 +113,14 @@ const VideoFeed = () => {
         <>
             <Header />
             <SideBar />
-            <div className="main-content">
-                <div className="feed-container">
-                    <div className="video-grid">
-                        {videos.map((item) => {
-                            const videoId = item.id.videoId;
-                            if (!videoId) return null;
-                            return (
-                                <YoutubeVid vid={item} thumbnails={item.snippet.thumbnails} key={item.id.videoId} />
-                            );
-                        })}
-                    </div>
-                </div>
+            <div className="feed-container">
+                    {videos.map((item) => {
+                        const videoId = item.id.videoId;
+                        if (!videoId) return null;
+                        return (
+                            <YoutubeVid vid={item} thumbnails={item.snippet.thumbnails} key={item.id.videoId} />
+                        );
+                    })}
             </div>
         </>
     );
