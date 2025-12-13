@@ -2,7 +2,21 @@
     position: fixed;
     background: white;
     padding: 12px;
+    padding-top: 0;
     color: #0f0f0f;
     left: 0;
     top: 56px;
+    width: 40px;
+    transition: all 0.3s ease-in-out;
+}
+.nav-item {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 12px;
+    overflow: hidden;
+}
+
+.sidebar:hover {
+    width: 160px;
 }
