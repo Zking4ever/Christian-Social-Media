@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './VideoFeed.css';
+import Header from './Header/Header';
+import SideBar from './SideBar/SideBar';
+import YoutubeVid from './ui/YoutubeVid/YoutubeVid';
 
 const VideoFeed = () => {
     const [videos, setVideos] = useState([
@@ -9,6 +12,11 @@ const VideoFeed = () => {
             snippet: {
                 title: 'What A Beautiful Name - Hillsong Worship',
                 description: 'Official Lyrics Video for What A Beautiful Name by Hillsong Worship.',
+                thumbnails: {
+                    default: { url: 'https://i.ytimg.com/vi/M5tZpM5Vq0Q/default.jpg' },
+                    medium: { url: 'https://i.ytimg.com/vi/M5tZpM5Vq0Q/default.jpg' },
+                    high: { url: 'https://i.ytimg.com/vi/M5tZpM5Vq0Q/default.jpg' },
+                },
                 channelTitle: 'Hillsong Worship',
             }
         },
@@ -17,6 +25,11 @@ const VideoFeed = () => {
             snippet: {
                 title: 'Break Every Chain - Tasha Cobbs Leonard',
                 description: 'Tasha Cobbs Leonard performing Break Every Chain live.',
+                thumbnails: {
+                    default: { url: 'https://i.ytimg.com/vi/Vn8phH0k5HI/default.jpg' },
+                    medium: { url: 'https://i.ytimg.com/vi/Vn8phH0k5HI/default.jpg' },
+                    high: { url: 'https://i.ytimg.com/vi/Vn8phH0k5HI/default.jpg' },
+                },
                 channelTitle: 'Tasha Cobbs Leonard',
             }
         },
@@ -25,6 +38,11 @@ const VideoFeed = () => {
             snippet: {
                 title: 'Good Good Father - Chris Tomlin',
                 description: 'Music video by Chris Tomlin performing Good Good Father.',
+                thumbnails: {
+                    default: { url: 'https://i.ytimg.com/vi/eF9h5W7v2wI/default.jpg' },
+                    medium: { url: 'https://i.ytimg.com/vi/eF9h5W7v2wI/default.jpg' },
+                    high: { url: 'https://i.ytimg.com/vi/eF9h5W7v2wI/default.jpg' },
+                },
                 channelTitle: 'Chris Tomlin',
             }
         },
@@ -78,55 +96,16 @@ const VideoFeed = () => {
 
     return (
         <div className="youtube-clone">
-            <header className="header">
-                <div className="logo">
-                    <span className="logo-icon">✝️</span> <span>FaithFeed</span>
-                </div>
-                <div className="search-bar">
-                    <input type="text" placeholder="Search" />
-                    <button>🔍</button>
-                </div>
-                <div className="user-menu">
-                    <div className="avatar">👤</div>
-                </div>
-            </header>
-
+            <Header />
+            <SideBar />
             <div className="main-content">
-                <aside className="sidebar">
-                    <div className="nav-item active">🏠 Home</div>
-                    <div className="nav-item">🔥 Trending</div>
-                    <div className="nav-item">🎞️ Shorts</div>
-                    <div className="nav-item">📁 Library</div>
-                </aside>
-
                 <div className="feed-container">
                     <div className="video-grid">
                         {videos.map((item) => {
                             const videoId = item.id.videoId;
                             if (!videoId) return null;
-
                             return (
-                                <div key={videoId} className="video-card">
-                                    <div className="thumbnail-container">
-                                        <iframe
-                                            width="100%"
-                                            height="100%"
-                                            src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`}
-                                            title={item.snippet.title}
-                                            frameBorder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            allowFullScreen
-                                        ></iframe>
-                                    </div>
-                                    <div className="video-info">
-                                        <div className="channel-avatar">✝️</div>
-                                        <div className="video-text">
-                                            <h3 className="video-title">{item.snippet.title}</h3>
-                                            <p className="channel-name">{item.snippet.channelTitle}</p>
-                                            <p className="video-meta">10K views • 2 hours ago</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                <YoutubeVid vid={item} key={item.id.videoId} />
                             );
                         })}
                     </div>
