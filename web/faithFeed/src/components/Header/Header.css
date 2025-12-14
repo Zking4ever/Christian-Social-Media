@@ -10,17 +10,26 @@
     justify-content: space-between;
     padding: 0 16px;
     z-index: 100;
+<<<<<<< HEAD
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     color: var(--text-primary);
     background-color: var(--primary-bg);
     backdrop-filter: blur(10vpx);
+=======
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+>>>>>>> 37cfb0c (added the home page)
 }
 
 .logo {
     display: flex;
     align-items: center;
     font-weight: 600;
+<<<<<<< HEAD
     font-size: 1.2rem;
+=======
+    font-size: 1.25rem;
+>>>>>>> 37cfb0c (added the home page)
     letter-spacing: -0.5px;
     gap: 8px;
     color: var(--text-primary);
@@ -41,20 +50,40 @@
     font-size: 16px;
     outline: none;
     color: var(--text-primary);
+<<<<<<< HEAD
+=======
+    background: var(--primary-bg);
+}
+
+.search-bar input:focus {
+    border-color: var(--accent-color);
+>>>>>>> 37cfb0c (added the home page)
 }
 
 .search-bar button {
     padding: 10px 20px;
+<<<<<<< HEAD
     background: var(--primary-bg);
+=======
+    background: var(--hover-bg);
+>>>>>>> 37cfb0c (added the home page)
     border: 1px solid var(--border-color);
     border-left: none;
     border-radius: 0 20px 20px 0;
     cursor: pointer;
+<<<<<<< HEAD
     transition: all 0.3s ease;
 }
 
 .search-bar button:hover {
     background: var(--primary-bg);
+=======
+    transition: background 0.2s;
+}
+
+.search-bar button:hover {
+    background: var(--border-color);
+>>>>>>> 37cfb0c (added the home page)
 }
 
 .user-menu {

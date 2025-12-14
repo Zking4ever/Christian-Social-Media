@@ -1,35 +1,42 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   /* Color palet */
   --primary-color: #1a1a1a;
-  --secondary-color: #f5f5f5;
-  --accent-color: #06d4a0;
+  --secondary-color: #f1f3ef;
+  --accent-color: #6b8f71;
   --accent-hover: #079471;
   --hover-color: #f5f5f5;
   --primary-bg: #ffffff;
   --secondary-bg: #f9f9f9;
   --text-primary: #0f0f0f;
-  --text-secondary: #606060;
+  --text-secondary: #31373574;
+  --text-third: #02f5a074;
   --border-color: #e5e5e5;
   --hover-bg: hsl(0, 0%, 75%);
-  
+
+  --hover-bg: #f2f2f2;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+.youtube-clone {
+  background-color: var(--secondary-color);
+}
+
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--accent-color);
   text-decoration: inherit;
 }
 
 a:hover {
-  color: #535bf2;
+  color: var(--accent-color);
 }
 
 body {
@@ -85,7 +92,8 @@ button:focus-visible {
 
 body {
   margin: 0;
-  background-color: #f9f9f9;
+  background-color: var(--secondary-bg);
+  color: var(--text-primary);
 }
 
 .youtube-clone {
@@ -100,4 +108,6 @@ body {
   flex: 1;
   margin-top: 56px;
   min-height: calc(100vh - 56px);
+  display: flex;
+  flex-wrap: wrap;
 }

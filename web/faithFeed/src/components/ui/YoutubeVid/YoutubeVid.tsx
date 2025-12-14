@@ -4,7 +4,6 @@ import VideoData, { Thumbnail } from "../../interfaces/youtube";
 import { Link } from 'react-router-dom';
 
 export default function YoutubeVid({ vid, thumbnails }: { vid: VideoData, thumbnails: Thumbnail }) {
-    console.log(vid)
     return (
         <Link to={`/watch/${vid.id.videoId}`} style={{ textDecoration: 'none', color: 'inherit' }}>
             <div className="video-card">

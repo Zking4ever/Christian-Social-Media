@@ -1,0 +1,438 @@
+.home-container {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 75px;
+    position: relative;
+    padding-bottom: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.home-feed {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.home-header-container {
+    text-align: center;
+    color: var(--accent-color);
+    height: 70vh;
+}
+
+.home-description {
+    font-weight: 500;
+}
+
+/* Create Post Section */
+.create-post-card {
+    background: var(--primary-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.post-input {
+    width: 100%;
+    min-height: 120px;
+    padding: 18px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: inherit;
+    resize: vertical;
+    outline: none;
+    color: var(--text-primary);
+    background: var(--primary-bg);
+    margin-bottom: 12px;
+    box-sizing: border-box;
+    line-height: 1.5;
+}
+
+.post-input:focus {
+    border-color: var(--accent-color);
+}
+
+.post-input::placeholder {
+    color: var(--text-secondary);
+}
+
+.audio-note-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+    background: var(--secondary-bg);
+    box-sizing: border-box;
+}
+
+.audio-note-input:focus {
+    border-color: var(--accent-color);
+}
+
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.post-type-selector {
+    display: flex;
+    gap: 8px;
+}
+
+.type-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--primary-bg);
+    color: var(--text-secondary);
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.type-btn:hover {
+    background: var(--hover-bg);
+    color: var(--text-primary);
+}
+
+.type-btn.active {
+    background: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+}
+
+.type-btn svg {
+    font-size: 18px;
+}
+
+.post-btn {
+    padding: 10px 32px;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.post-btn:hover {
+    background: var(--accent-hover);
+}
+
+/* Posts Feed */
+.posts-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.post-card {
+    background: var(--primary-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s;
+}
+
+.post-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Post Header */
+.post-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.author-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.author-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.author-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.author-name {
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--text-primary);
+}
+
+.post-meta {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+/* Post Content */
+.post-content {
+    margin-bottom: 12px;
+}
+
+.post-content p {
+    margin: 0 0 12px 0;
+    line-height: 1.6;
+    color: var(--text-primary);
+    font-size: 16px;
+}
+
+.audio-note {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    background: var(--secondary-bg);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.audio-note svg {
+    font-size: 20px;
+    color: var(--accent-color);
+}
+
+.post-media {
+    margin-top: 12px;
+}
+
+.media-placeholder {
+    width: 100%;
+    padding: 60px;
+    background: var(--secondary-bg);
+    border-radius: 8px;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 18px;
+}
+
+/* Engagement Stats */
+.engagement-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+    min-height: 32px;
+}
+
+.stats-left,
+.stats-right {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.stat-icon {
+    color: #e74c3c;
+    font-size: 16px;
+}
+
+/* Action Buttons */
+.post-actions-bar {
+    display: flex;
+    justify-content: space-around;
+    gap: 8px;
+    padding-top: 8px;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex: 1;
+    justify-content: center;
+}
+
+.action-btn:hover {
+    background: var(--hover-bg);
+    color: var(--text-primary);
+}
+
+.action-btn svg {
+    font-size: 18px;
+}
+
+.action-btn.liked {
+    color: #e74c3c;
+}
+
+.action-btn.liked:hover {
+    color: #c0392b;
+}
+
+.action-btn.saved {
+    color: var(--accent-color);
+}
+
+.action-btn.saved:hover {
+    color: var(--accent-hover);
+}
+
+/* Load More Button */
+.load-more-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
+
+.load-more-btn {
+    padding: 12px 48px;
+    background: var(--primary-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.load-more-btn:hover {
+    background: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+}
+
+/* Verse of the Day */
+.verse-of-the-day {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    max-width: 320px;
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+}
+
+.verse-of-the-day h3 {
+    margin: 0 0 12px 0;
+    font-size: 16px;
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+.verse-text {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+.verse-reference {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: right;
+    opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .home-container {
+        padding: 0 12px;
+        padding-bottom: 80px;
+        max-width: 95%;
+        flex-direction: column;
+        margin: auto;
+    }
+
+    .home-header-container {
+        padding-top: 40px;
+        height: 75vh;
+    }
+
+    .home-feed {
+        padding: 0;
+    }
+
+    .home-header-container h1 {
+        margin-bottom: 20px;
+    }
+
+    .home-description {
+        color: #716b6bcc;
+    }
+
+    .post-type-selector {
+        flex-wrap: wrap;
+    }
+
+    .type-btn {
+        font-size: 13px;
+        padding: 6px 10px;
+    }
+
+    .verse-of-the-day {
+        position: static;
+        max-width: 100%;
+        margin-top: 24px;
+    }
+
+    .post-actions-bar {
+        flex-wrap: wrap;
+    }
+
+    .action-btn {
+        font-size: 13px;
+        padding: 6px 12px;
+    }
+}
