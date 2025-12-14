@@ -147,6 +147,7 @@
     .main-content {
         height: 85vh;
         margin-left: auto;
+        width: 100%;    
     }
 
     .chat-container {

@@ -85,7 +85,7 @@ export default function Home() {
 
                     {/* Action Buttons */}
                     <div className="hero-actions">
-                        <button className="hero-btn primary" onClick={() => navigate('/aimentor')}>
+                        <button className="hero-btn primary" onClick={() => navigate('/communities')}>
                             Get Counselor
                         </button>
                         <button className="hero-btn secondary" onClick={() => navigate('/videos')}>
