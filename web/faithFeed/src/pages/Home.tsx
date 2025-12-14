@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import './Home.css';
 import PostCard from '../components/ui/Post/PostCard';
@@ -21,6 +22,7 @@ interface Post {
 }
 
 export default function Home() {
+    const navigate = useNavigate(); // Hook for navigation
     const [posts, setPosts] = useState<Post[]>([
         {
             id: 1,
@@ -61,18 +63,49 @@ export default function Home() {
         verse: 'For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.',
         reference: 'John 3:16'
     };
-    
+
+    // Images for slider
+    const sliderImages = [
+        "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=800&q=80", // Cross Sunset
+        "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?auto=format&fit=crop&w=800&q=80", // Bible
+        "https://images.unsplash.com/photo-1491841550275-ad7854e35ca6?auto=format&fit=crop&w=800&q=80", // Praying Hands
+        "https://images.unsplash.com/photo-1515162305285-0293e4767cc2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2h1cmNofGVufDB8fDB8fHww", // Church
+        "https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=800&q=80", // Worship
+    ];
+
     return (
         <div className="home-container">
             <div className="home-feed">
                 <div className="home-header-container">
                     <h1>FaithFeed</h1>
                     <p className="home-description">
-                        A blessed community where faith meets fellowship. Share your testimonies, 
-                        inspire others with God's word, and grow together in Christ. 
+                        A blessed community where faith meets fellowship. Share your testimonies,
+                        inspire others with God's word, and grow together in Christ.
                     </p>
+
+                    {/* Action Buttons */}
+                    <div className="hero-actions">
+                        <button className="hero-btn primary" onClick={() => navigate('/aimentor')}>
+                            Get Counselor
+                        </button>
+                        <button className="hero-btn secondary" onClick={() => navigate('/videos')}>
+                            Explore Videos
+                        </button>
+                    </div>
+
+                    {/* Image Slider */}
+                    <div className="image-slider-container">
+                        <div className="slider-track">
+                            {/* Duplicate images for seamless infinite scroll */}
+                            {[...sliderImages, ...sliderImages].map((img, index) => (
+                                <div key={index} className="slide-item">
+                                    <img src={img} alt={`Faith Moment ${index}`} />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
-                
+
                 {/* Posts Feed */}
                 <div className="posts-feed">
                     {posts.map(post => (
