@@ -13,7 +13,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import ProtectedRoute from './components/ProtectedRoute';
 import ProfilePage from './pages/ProfilePage';
-import CreatePage from './pages/createPage';
+import CreatePage from './pages/CreatePage';
 
 
 function App() {
