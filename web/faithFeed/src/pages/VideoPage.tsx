@@ -1,20 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Header from '../components/Header/Header';
-import SideBar from '../components/SideBar/SideBar';
+import { useLocation } from 'react-router-dom';
 import YoutubeVid from '../components/ui/YoutubeVid/YoutubeVid';
 import VideoData from '../components/interfaces/youtube';
 
 const VideoPage = () => {
     const [videos, setVideos] = useState<VideoData[]>([]);
-    const [loading, setLoading] = useState(false); // Set to false since we have data
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+    const location = useLocation();
 
     useEffect(() => {
         const fetchVideos = async () => {
+            setLoading(true);
             try {
-                // Fetch from our local backend
-                const response = await axios.get('http://localhost:3000/youtube-feed');
+                // Get query from URL parameters
+                const searchParams = new URLSearchParams(location.search);
+                const query = searchParams.get('query');
+
+                // Fetch from our local backend with query param
+                const response = await axios.get('http://localhost:3000/youtube-feed', {
+                    params: { query }
+                });
+
                 setVideos(response.data.data);
                 setLoading(false);
             } catch (err) {
@@ -25,22 +33,22 @@ const VideoPage = () => {
         };
 
         fetchVideos();
-    }, []);
+    }, [location.search]);
 
     if (loading) return <div className="loading">Loading faith-filled content...</div>;
     if (error) return <div className="error">{error}</div>;
 
     return (
         <>
-                <div className="feed-container">
-                    {videos.map((item) => {
-                        const videoId = item.id.videoId;
-                        if (!videoId) return null;
-                        return (
-                            <YoutubeVid vid={item} thumbnails={item.snippet.thumbnails} key={item.id.videoId} />
-                        );
-                    })}
-                </div>
+            <div className="feed-container">
+                {videos.map((item) => {
+                    const videoId = item.id.videoId;
+                    if (!videoId || !item.snippet.thumbnails) return null;
+                    return (
+                        <YoutubeVid vid={item} thumbnails={item.snippet.thumbnails} key={item.id.videoId} />
+                    );
+                })}
+            </div>
         </>
     );
 };

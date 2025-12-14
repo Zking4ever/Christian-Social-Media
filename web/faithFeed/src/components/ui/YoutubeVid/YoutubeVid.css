@@ -122,6 +122,7 @@
 @media (max-width:640px) {
     a:has(.video-card) {
         width: 100%;
+        display: contents;
     }
 
     .video-card {

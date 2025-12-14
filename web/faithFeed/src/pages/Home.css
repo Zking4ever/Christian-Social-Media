@@ -490,7 +490,7 @@
     overflow: hidden;
     position: relative;
     border-radius: 16px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .slider-track {
@@ -522,6 +522,7 @@
     0% {
         transform: translateX(0);
     }
+
     100% {
         /* Move by half the total width (since we duplicated items) */
         transform: translateX(-50%);
