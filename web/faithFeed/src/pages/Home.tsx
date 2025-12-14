@@ -1,7 +1,130 @@
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import './Home.css';
+import PostCard from '../components/ui/Post/PostCard';
+
+interface Post {
+    id: number;
+    author: {
+        name: string;
+        avatar: string;
+        role: string;
+    };
+    content: string;
+    type: 'text' | 'photo' | 'audio';
+    audioNote?: string;
+    timestamp: string;
+    reactions: number;
+    comments: number;
+    shares: number;
+    isLiked: boolean;
+    isSaved: boolean;
+}
+
 export default function Home() {
+    const navigate = useNavigate(); // Hook for navigation
+    const [posts, setPosts] = useState<Post[]>([
+        {
+            id: 1,
+            author: {
+                name: 'Sarah Johnson',
+                avatar: 'SJ',
+                role: 'Member'
+            },
+            content: 'The Lord is my shepherd; I shall not want. This verse has given me so much peace today. 🙏',
+            type: 'text',
+            timestamp: '2 hours ago',
+            reactions: 24,
+            comments: 5,
+            shares: 2,
+            isLiked: false,
+            isSaved: false
+        },
+        {
+            id: 2,
+            author: {
+                name: 'David Miller',
+                avatar: 'DM',
+                role: 'Pastor'
+            },
+            content: 'Sharing my testimony about God\'s faithfulness this week. Click to listen.',
+            type: 'audio',
+            audioNote: 'A powerful testimony of healing and restoration',
+            timestamp: '5 hours ago',
+            reactions: 42,
+            comments: 12,
+            shares: 8,
+            isLiked: true,
+            isSaved: false
+        }
+    ]);
+
+    const verseOfTheDay = {
+        verse: 'For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.',
+        reference: 'John 3:16'
+    };
+
+    // Images for slider
+    const sliderImages = [
+        "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=800&q=80", // Cross Sunset
+        "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?auto=format&fit=crop&w=800&q=80", // Bible
+        "https://images.unsplash.com/photo-1491841550275-ad7854e35ca6?auto=format&fit=crop&w=800&q=80", // Praying Hands
+        "https://images.unsplash.com/photo-1515162305285-0293e4767cc2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2h1cmNofGVufDB8fDB8fHww", // Church
+        "https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=800&q=80", // Worship
+    ];
+
     return (
-        <div>
-            <h1>Home</h1>
+        <div className="home-container">
+            <div className="home-feed">
+                <div className="home-header-container">
+                    <h1>FaithFeed</h1>
+                    <p className="home-description">
+                        A blessed community where faith meets fellowship. Share your testimonies,
+                        inspire others with God's word, and grow together in Christ.
+                    </p>
+
+                    {/* Action Buttons */}
+                    <div className="hero-actions">
+                        <button className="hero-btn primary" onClick={() => navigate('/communities')}>
+                            Get Counselor
+                        </button>
+                        <button className="hero-btn secondary" onClick={() => navigate('/videos')}>
+                            Explore Videos
+                        </button>
+                    </div>
+
+                    {/* Image Slider */}
+                    <div className="image-slider-container">
+                        <div className="slider-track">
+                            {/* Duplicate images for seamless infinite scroll */}
+                            {[...sliderImages, ...sliderImages].map((img, index) => (
+                                <div key={index} className="slide-item">
+                                    <img src={img} alt={`Faith Moment ${index}`} />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
+                {/* Posts Feed */}
+                <div className="posts-feed">
+                    {posts.map(post => (
+                        <PostCard key={post.id} post={post} posts={posts} setPosts={setPosts} />
+                    ))}
+                </div>
+
+                {/* Load More Button */}
+                <div className="load-more-container">
+                    <button className="load-more-btn">Load More Posts</button>
+                </div>
+            </div>
+
+            {/* Verse of the Day - Bottom Left */}
+            <div className="verse-of-the-day">
+                <h3>Verse of the Day</h3>
+                <p className="verse-text">"{verseOfTheDay.verse}"</p>
+                <p className="verse-reference">- {verseOfTheDay.reference}</p>
+            </div>
         </div>
     );
 }

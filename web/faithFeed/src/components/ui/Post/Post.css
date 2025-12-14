@@ -1,11 +1,18 @@
 .post {
-  max-width: 500px;
-  border: 1px solid #e5e5e5;
-  border-radius: 5px;
-  padding: 12px;
+  max-width: 600px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  background: var(--primary-bg);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s;
+}
+
+.post:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Each section is a ROW */
@@ -24,6 +31,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 /* Content row */
@@ -40,13 +48,19 @@
 
 /* Actions row */
 .actions {
-  border-top: 1px solid #eee;
-  padding-top: 8px;
-  gap: 5px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 12px;
+  gap: 8px;
 }
 
 .actions * {
   border: none;
   cursor: pointer;
-  font-size: 22px;
+  font-size: 20px;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+}
+
+.actions *:hover {
+  color: var(--text-primary);
 }

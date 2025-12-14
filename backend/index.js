@@ -51,8 +51,12 @@ app.post('/posts', (req, res) => {
 app.get('/youtube-feed', async (req, res) => {
     try {
         const { query } = req.query;
-        // Basic keywords or user query. Default to "Christian faith" if no query.
-        const searchQuery = query || 'Christian faith messages';
+        const checkQuery = String(query)?.toLowerCase();
+        if (checkQuery.includes('sex') || checkQuery?.includes('zefen') || checkQuery?.includes('porn') || checkQuery?.includes('film') || checkQuery?.includes('football') || checkQuery?.includes('game') || checkQuery?.includes('ball')) {
+            return res.status(400).json({ error: 'Invalid query' });
+        }
+        
+        const searchQuery = query || 'protestant amharic song and english preaching';
 
         // You need a YouTube API Key in your .env file
         const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
@@ -109,6 +113,10 @@ app.get('/youtube-feed', async (req, res) => {
         res.status(500).json({ error: 'Failed to fetch videos from YouTube' });
     }
 });
+
+app.get('/ai', (req, res) => {
+    // const prompt = req.bo
+})
 
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);

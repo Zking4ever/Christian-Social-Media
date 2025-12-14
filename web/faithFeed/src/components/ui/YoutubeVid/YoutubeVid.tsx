@@ -4,7 +4,6 @@ import VideoData, { Thumbnail } from "../../interfaces/youtube";
 import { Link } from 'react-router-dom';
 
 export default function YoutubeVid({ vid, thumbnails }: { vid: VideoData, thumbnails: Thumbnail }) {
-    console.log(vid)
     return (
         <Link to={`/watch/${vid.id.videoId}`} style={{ textDecoration: 'none', color: 'inherit' }}>
             <div className="video-card">
@@ -16,7 +15,7 @@ export default function YoutubeVid({ vid, thumbnails }: { vid: VideoData, thumbn
                     <div className="video-text">
                         <h3 className="video-title">{vid.snippet.title}</h3>
                         <p className="channel-name">{vid.snippet.channelTitle}</p>
-                        <p className="video-meta">10K views • 2 hours ago</p>
+                        <p className="video-meta">{(Math.floor(Math.random() * 1000) + 1) * 2}k views • 2 hours ago</p>
                     </div>
                 </div>
             </div>
