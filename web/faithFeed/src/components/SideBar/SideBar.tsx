@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { MdOutlineOndemandVideo } from "react-icons/md";
 import { RiUserCommunityLine } from "react-icons/ri";
 import { RiRobot3Line } from "react-icons/ri";
+import { FaRegPlusSquare } from "react-icons/fa";
 import './SideBar.css'
 import { useState } from "react";
 export default function SideBar() {
@@ -18,6 +19,9 @@ export default function SideBar() {
             </Link>
             <Link to="/communities" style={{ textDecoration: 'none', color: 'inherit' }} onClick={() => setPage('communities')}>
                 <div className={`nav-item ${page == 'communities' ? 'active' : ''}`}> <RiUserCommunityLine size={28} /> <span>Communities</span></div>
+            </Link>
+            <Link to="/create" style={{ textDecoration: 'none', color: 'inherit' }} onClick={() => setPage('create')}>
+                <div className={`nav-item ${page == 'create' ? 'active' : ''}`}> <FaRegPlusSquare size={24} /> <span>Create</span></div>
             </Link>
             <Link to="/aimentor" style={{ textDecoration: 'none', color: 'inherit' }} onClick={() => setPage('aiMentor')}>
                 <div className={`nav-item ${page == 'aiMentor' ? 'active' : ''}`}> <RiRobot3Line size={24} /> <span>Ai Mentor</span></div>

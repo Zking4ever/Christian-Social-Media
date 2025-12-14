@@ -20,7 +20,7 @@ interface Post {
     isSaved: boolean;
 }
 
-export default function createPost({ posts, setPosts }: { posts: Post[]; setPosts: React.Dispatch<React.SetStateAction<Post[]>> }) {
+export default function CreatePost() {
     
     const [postContent, setPostContent] = useState('');
     const [audioNote, setAudioNote] = useState('');
@@ -29,27 +29,27 @@ export default function createPost({ posts, setPosts }: { posts: Post[]; setPost
     const handlePost = () => {
         if (!postContent.trim()) return;
 
-        const newPost: Post = {
-            id: posts.length + 1,
-            author: {
-                name: 'You',
-                avatar: 'Y',
-                role: 'Member'
-            },
-            content: postContent,
-            type: postType,
-            audioNote: postType === 'audio' ? audioNote : undefined,
-            timestamp: 'Just now',
-            reactions: 0,
-            comments: 0,
-            shares: 0,
-            isLiked: false,
-            isSaved: false
-        };
-        setPosts([newPost, ...posts]);
-        setPostContent('');
-        setAudioNote('');
-        setPostType('text');
+    //     const newPost: Post = {
+    //         id: posts.length + 1,
+    //         author: {
+    //             name: 'You',
+    //             avatar: 'Y',
+    //             role: 'Member'
+    //         },
+    //         content: postContent,
+    //         type: postType,
+    //         audioNote: postType === 'audio' ? audioNote : undefined,
+    //         timestamp: 'Just now',
+    //         reactions: 0,
+    //         comments: 0,
+    //         shares: 0,
+    //         isLiked: false,
+    //         isSaved: false
+    //     };
+    //     setPosts([newPost, ...posts]);
+    //     setPostContent('');
+    //     setAudioNote('');
+    //     setPostType('text');
     };
 
     

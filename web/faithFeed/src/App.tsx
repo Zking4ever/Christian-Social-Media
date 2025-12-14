@@ -6,7 +6,6 @@ import Header from './components/Header/Header';
 import SideBar from './components/SideBar/SideBar';
 import AiMentorPage from './pages/aiMentor';
 import WatchPage from './pages/WatchPage';
-import UserProfile from './components/UserProfile/UserProfile';
 import UploadPage from './pages/UploadPage';
 
 import CommunitiesPage from './pages/CommunitiesPage';
@@ -14,6 +13,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import ProtectedRoute from './components/ProtectedRoute';
 import ProfilePage from './pages/ProfilePage';
+import CreatePage from './pages/createPage';
 
 
 function App() {
@@ -52,6 +52,11 @@ function App() {
             <Route path='/upload' element={
               <ProtectedRoute>
                 <UploadPage />
+              </ProtectedRoute>
+            } />
+            <Route path='/create' element={
+              <ProtectedRoute>
+                <CreatePage />
               </ProtectedRoute>
             } />
             <Route path='/aimentor' element={
