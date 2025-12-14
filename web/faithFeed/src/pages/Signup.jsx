@@ -18,7 +18,7 @@ const Signup = () => {
         signup({ email, name });
 
         // Navigate home
-        navigate('/', { replace: true });
+        navigate('/home', { replace: true });
     };
 
     const containerStyle = {
@@ -97,7 +97,7 @@ const Signup = () => {
                 <button type="submit" style={buttonStyle}>Sign Up</button>
             </form>
             <p style={{ marginTop: '1rem' }}>
-                Already have an account? <Link to="/login" style={{ color: '#3ea6ff' }}>Login</Link>
+                Already have an account? <Link to="/" style={{ color: '#3ea6ff' }}>Login</Link>
             </p>
         </div>
     );

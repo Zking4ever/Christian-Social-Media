@@ -25,11 +25,11 @@ function App() {
         <SideBar />
         <div className="main-content" style={{ flex: 1 }}>
           <Routes>
-            <Route path='/login' element={<Login />} />
+            <Route path='/' element={<Login />} />
             <Route path='/signup' element={<Signup />} />
 
             {/* Protected Routes */}
-            <Route path='/' element={
+            <Route path='/home' element={
               <ProtectedRoute>
                 <Home />
               </ProtectedRoute>
@@ -69,6 +69,7 @@ function App() {
                 <ProfilePage />
               </ProtectedRoute>
             } />
+            <Route path="*" element={<Login />} />
           </Routes>
         </div>
       </div>
