@@ -19,7 +19,7 @@ const VideoPage = () => {
                 const query = searchParams.get('query');
 
                 // Fetch from our local backend with query param
-                const response = await axios.get('http://localhost:3000/youtube-feed', {
+                const response = await axios.get('https://faithfeed.onrender.com/youtube-feed', {
                     params: { query }
                 });
 
