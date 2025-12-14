@@ -11,7 +11,7 @@ export default function SideBar() {
     const [page, setPage] = useState('home');
     return (
         <aside className="sidebar">
-            <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }} onClick={() => setPage('home')}>
+            <Link to="/home" style={{ textDecoration: 'none', color: 'inherit' }} onClick={() => setPage('home')}>
                 <div className={`nav-item ${page == 'home' ? 'active' : ''}`}><IoMdHome size={28} /> <span>Home</span></div>
             </Link>
             <Link to="/videos" style={{ textDecoration: 'none', color: 'inherit' }} onClick={() => setPage('video')}>
