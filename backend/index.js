@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
 require('dotenv').config();
+const cronJob = require('./cron');
 const db = require('./database');
 
 const app = express();
@@ -9,6 +10,7 @@ const PORT = 3000;
 
 app.use(cors());
 app.use(express.json());
+if (process.env.NODE_ENV == 'production') cronJob.start();
 
 // Get feed (approved videos)
 app.get('/feed', (req, res) => {
@@ -114,8 +116,8 @@ app.get('/youtube-feed', async (req, res) => {
     }
 });
 
-app.get('/ai', (req, res) => {
-    // const prompt = req.bo
+app.get('/', (req, res) => {
+    res.send('Backend is running');
 })
 
 app.listen(PORT, () => {
