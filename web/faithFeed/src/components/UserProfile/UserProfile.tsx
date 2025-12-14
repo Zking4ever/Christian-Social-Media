@@ -1,6 +1,7 @@
 
 import React, { useMemo } from 'react';
 import './UserProfile.css';
+import { useAuth } from '../../context/AuthContext';
 
 interface UserProfileProps {
     user?: {
@@ -27,13 +28,15 @@ const getRandomColor = () => {
     return colors[Math.floor(Math.random() * colors.length)];
 };
 
-const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
+const UserProfile: React.FC<UserProfileProps> = () => {
+    const { user,logout } = useAuth();
+    const letter = user.name
     // Default data if no prop provided
-    const userData = user || {
-        name: 'Grace Walker',
-        username: '@gracewalker',
+    const userData = {
+        name: `${user.name}`,
+        username: `${user.email}`,
         bio: 'Sharing the light of Christ ✨ | Worship Leader 🎵 | Psalm 23:1',
-        avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+        avatarUrl: `https://avatar.iran.liara.run/username?username=${(user.name).split('')[0]}`,
         followers: 1205,
         following: 450
     };
@@ -42,6 +45,8 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
     const backgroundStyle = useMemo(() => ({
         background: getRandomColor()
     }), []);
+
+
 
     return (
         <div className="user-profile-card">
@@ -59,17 +64,8 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
                 <h2 className="profile-name">{userData.name}</h2>
                 <p className="profile-username">{userData.username}</p>
                 <p className="profile-bio">{userData.bio}</p>
-
-                <div className="profile-stats">
-                    <div className="stat-item">
-                        <span className="stat-value">{userData.followers.toLocaleString()}</span>
-                        <span className="stat-label">Followers</span>
-                    </div>
-                    <div className="stat-item">
-                        <span className="stat-value">{userData.following.toLocaleString()}</span>
-                        <span className="stat-label">Following</span>
-                    </div>
-                </div>
+                
+                <button style={{backgroundColor:'var(--accent-color)',color:'white'}} onClick={()=>logout()}>Log out</button>
             </div>
         </div>
     );

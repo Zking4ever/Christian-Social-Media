@@ -1,7 +1,7 @@
 .user-profile-card {
     position: relative;
-    width: 100%;
-    max-width: 400px;
+    width: 95%;
+    max-width: 800px;
     background: #ffffff;
     border-radius: 20px;
     overflow: hidden;

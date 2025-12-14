@@ -110,6 +110,10 @@ app.get('/youtube-feed', async (req, res) => {
     }
 });
 
+app.get('/ai',(req,res)=>{
+    // const prompt = req.bo
+})
+
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });

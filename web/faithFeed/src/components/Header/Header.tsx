@@ -1,4 +1,6 @@
 import './Header.css'
+import { Link } from 'react-router-dom';
+import { FaRegUser } from "react-icons/fa";
 export default function Header() {
     return (
         <header className="header">
@@ -9,9 +11,13 @@ export default function Header() {
                 <input type="text" placeholder="Search" />
                 <button>🔍</button>
             </div>
-            <div className="user-menu">
-                <div className="avatar">👤</div>
-            </div>
+            <Link to='/profile'>
+                <div className="user-menu">
+                    <div className="avatar">
+                        <FaRegUser />
+                    </div>
+                </div>
+            </Link>
         </header>
     );
 }
